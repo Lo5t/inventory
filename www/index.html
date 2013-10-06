@@ -6,10 +6,10 @@
         <script src="phonegap.js"></script>
         <script src="barcodescanner.js"></script>
         <script type="text/javascript" language="JavaScript">
-        
-        window.onload = pageSetUp;
-    var scanner;
+        var scanner;
 
+        window.onload = pageSetUp();
+    
 function pageSetUp() {
     document.getElementsById('barcode').onclick = clickScan();
     try {
@@ -31,17 +31,11 @@ function pageSetUp() {
         return false;
     }
     
-    //------------------------------------------------------------------------------
     function scannerSuccess(result) {
-        navigator.notification.alert("Scan Success");
-        console.log("scannerSuccess: result: " + result);
         document.getElementById('barcodesplash').innerHTML="success: " + JSON.stringify(result);
     }
     
-    //------------------------------------------------------------------------------
     function scannerFailure(message) {
-        navigator.notification.alert("Scan Fail");
-        console.log("scannerFailure: message: " + message);
         document.getElementById('barcodesplash').innerHTML="failure: " + JSON.stringify(message);
     }
 
@@ -49,7 +43,7 @@ function pageSetUp() {
     </head>
     <body>
         <div id="keypad">
-            <p id="barcodes">Add barcode.</p>
+            <p id="barcode">Add barcode.</p>
             <p id="barcodesplash"></p>
         </div>
     </body>
