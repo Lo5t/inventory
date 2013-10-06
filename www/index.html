@@ -8,29 +8,23 @@
         <script type="text/javascript" language="JavaScript">
         var scanner;
 
-        window.onload = pageSetUp();
-    
-function pageSetUp() {
-    document.getElementsById('barcode').onclick = clickScan();
-    try {
+window.onload = function() {
+  document.getElementById("barcode").onclick = function() {
+    try{
+        scanner.scan(scannerSuccess, scannerFailure);
+    }catch(e){
+        alert(e.message);
+    }
+    };
+ try {
     scanner = cordova.require("cordova/plugin/BarcodeScanner");
         alert('scanner loaded');
     }
     catch(e) {
         alert('scanner could not be loaded');
     }
-
-    }
-
-    function clickScan() {
-        try{
-        scanner.scan(scannerSuccess, scannerFailure);
-        }catch(e){
-        alert(e.message);
-        }
-        return false;
-    }
-    
+};
+     
     function scannerSuccess(result) {
         document.getElementById('barcodesplash').innerHTML="success: " + JSON.stringify(result);
     }
