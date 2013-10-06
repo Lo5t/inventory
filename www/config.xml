@@ -17,6 +17,8 @@ Inventory program that uses barcode scanner.
 Tim Spencer 
 </author>
 
+    <preference name="permissions"                value="none"/>
+
  <icon src="icon.png" />
  
  <gap:splash src="splash.png" />
