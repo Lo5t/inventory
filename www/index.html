@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Tiny Site</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <script src="phonegap.js"></script>
+        <script src="barcodescanner.js"></script>
+        <script type="text/javascript" language="JavaScript">
+        
+        window.onload = pageSetUp;
+    var scanner;
+
+function pageSetUp() {
+    document.getElementsById('barcode').onclick = clickScan();
+    try {
+    scanner = cordova.require("cordova/plugin/BarcodeScanner");
+        alert('scanner loaded');
+    }
+    catch(e) {
+        alert('scanner could not be loaded');
+    }
+
+    }
+
+    function clickScan() {
+        try{
+        scanner.scan(scannerSuccess, scannerFailure);
+        }catch(e){
+        alert(e.message);
+        }
+        return false;
+    }
+    
+    //------------------------------------------------------------------------------
+    function scannerSuccess(result) {
+        navigator.notification.alert("Scan Success");
+        console.log("scannerSuccess: result: " + result);
+        document.getElementById('barcodesplash').innerHTML="success: " + JSON.stringify(result);
+    }
+    
+    //------------------------------------------------------------------------------
+    function scannerFailure(message) {
+        navigator.notification.alert("Scan Fail");
+        console.log("scannerFailure: message: " + message);
+        document.getElementById('barcodesplash').innerHTML="failure: " + JSON.stringify(message);
+    }
+
+        </script>
+    </head>
+    <body>
+        <div id="keypad">
+            <a id="barcode" target="_blank">Add barcode.</a>
+            <p id="barcodesplash"></p>
+        </div>
+    </body>
+</html>

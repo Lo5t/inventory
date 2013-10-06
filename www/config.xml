@@ -16,6 +16,11 @@ An example for phonegap build docs.
 <author href="https://build.phonegap.com" email="tim.spencer@dlr.de">
 Tim Spencer 
 </author>
+
+ <icon src="icon.png" />
+ 
+ <gap:splash src="splash.png" />
+
 <gap:plugin name="com.phonegap.plugins.barcodescanner" />
 </widget>
 
