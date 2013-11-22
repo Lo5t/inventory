@@ -24,5 +24,6 @@ Tim Spencer
  <gap:splash src="splash.png" />
 
 <gap:plugin name="com.phonegap.plugins.barcodescanner" />
+<gap:plugin name="com.megster.cordova.bluetoothserial" />
 </widget>
 

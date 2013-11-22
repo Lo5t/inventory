@@ -3,15 +3,17 @@
     <head>
         <title>Tiny Site</title>
         <meta charset="utf-8" />
+        <script type="text/javascript" src="bluetoothSerial.js"></script>
         <script src="phonegap.js"></script>
         <script src="barcodescanner.js"></script>
         <script type="text/javascript" language="JavaScript">
-        var scanner;
+        var scanner; 
+        var bluetoothSerial = cordova.require('bluetoothSerial');
 
 window.onload = function() {
   document.getElementById("barcode").onclick = function() {
     try{
-        scanner.scan(scannerSuccess, scannerFailure);
+        scanner.scan(scannerSuccess, scannerFailure); 
     }catch(e){
         alert(e.message);
     }
@@ -39,6 +41,8 @@ window.onload = function() {
         <div id="keypad">
             <p id="barcode">Add barcode.</p>
             <p id="barcodesplash"></p>
+             <p id="bluetooth">Activate bluetooth.</p>
+            <p id="bluetooth"></p>
         </div>
     </body>
 </html>
